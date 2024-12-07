@@ -10,10 +10,9 @@ const geistVF = localFont({
 });
 
 const moods = [
-    "Happy", "Sad", "Angry", "Anxious", "Excited", "Tired", "Content", "Stressed",
-    "Relaxed", "Frustrated", "Bored", "Peaceful", "Confused", "Optimistic",
-    "Overwhelmed", "Lonely", "Grateful", "Curious", "Inspired", "Sick", "Loving",
-    "Hurt", "Disgusted", "Ashamed", "Determined"
+    "Happy", "Sad", "Angry", "Anxious", "Excited", "Tired", "Stressed",
+    "Relaxed", "Frustrated", "Bored", "Peaceful", "Confused", "Optimistic", "Lonely", "Curious", "Inspired", "Sick", "Loving",
+    "Hurt", "Ashamed", "Determined",
 ];
 
 export default function Moodly() {

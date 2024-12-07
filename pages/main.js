@@ -137,7 +137,6 @@ const handlePlay = () => {
       <div className="grid grid-cols-2 gap-10">
         {/* My Page Overlay */}
         <div className="w-[500px] h-[350px] bg-[#181818] bg-opacity-90 p-6 rounded-lg shadow-md text-white"> 
-          {/* ... */}
           <div className="mb-4">
             <h3 className="text-lg font-bold mb-2">My Moods</h3>
             <div className="flex flex-wrap gap-2">
@@ -146,7 +145,9 @@ const handlePlay = () => {
                   <button 
                     key={mood} 
                     onClick={() => handleMoodClick(mood)} 
-                    className={`bg-gray-700 hover:bg-gray-600 text-white font-medium py-1 px-3 rounded-full text-xs ${selectedMood === mood ? 'bg-blue-500' : ''}`}
+                    className={`text-white font-medium py-1 px-3 rounded-full text-xs 
+                      ${selectedMood === mood ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-700 hover:bg-gray-600'} 
+                    `}
                   >
                     {mood}
                   </button>
@@ -156,13 +157,6 @@ const handlePlay = () => {
                   Loading moods...
                 </div>
               )}
-
-              <button 
-                onClick={handleAddMood}
-                className="border border-gray-600 hover:border-gray-500 text-white font-medium py-1 px-3 rounded-full text-xs"
-              >
-                add mood
-              </button>
             </div>
           </div>
 
@@ -187,8 +181,8 @@ const handlePlay = () => {
       <div className="flex"> {/* Single flex container */}
       {music.youtubelink ? (
                 <iframe // Changed from <img> to <iframe>
-                  width="200" // Adjust width as needed
-                  height="150" // Adjust height as needed
+                  width="80%" // Adjust width as needed
+                  height="200" // Adjust height as needed
                   src={`https://www.youtube.com/embed/${music.youtubelink}`}
                   title={music.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -204,10 +198,11 @@ const handlePlay = () => {
                   {music.title} by {music.artist}
                 </h4>
                 <p className="text-sm">Genre: {music.top_genre}</p>
+                <p className="text-sm mt-2">Artist: {music.artist}</p>
               </div>
             </div>
             <div className="mt-4 flex gap-4">
-              <button className="bg-gray-700 px-4 py-2 rounded-md" onClick={handleShuffle}>
+              <button className="bg-gray-700 px-40 py-2 rounded-md" onClick={handleShuffle}>
                 Shuffle
               </button>
             </div>
@@ -235,12 +230,15 @@ const handlePlay = () => {
                 <img 
                   src={movie.poster} 
                   alt={movie.title} 
-                  className="w-24 h-32 object-cover mr-4" 
+                  className="w-45 h-60 object-cover mr-4" 
                 />
                 <div> {/* Added container for text content */}
                   <h4 className="text-lg font-bold mb-2">{movie.title} ({movie.year})</h4>
-                  <p className="text-sm">Genre: {movie.genre}</p>
-                  <p className="text-sm mt-2">{movie.description}</p> {/* Added description */}
+                  <p className="text-sm mt-2">Genre: {movie.genre}</p>
+                  <p className="text-sm mt-2">Cast: {movie.Cast}</p>
+                  <p className="text-sm mt-2">Description: {movie.description}</p> 
+                  <p className="text-sm mt-2">Rating: {movie.rating}</p> 
+                  <p className="text-sm mt-2">Duration: {movie.duration}</p> 
                 </div>
               </div>
             </div>
@@ -266,16 +264,13 @@ const handlePlay = () => {
                 <img
                   src={book["Image-URL-L"]}
                   alt={book["Book-Title"]}
-                  className="w-24 h-32 object-cover mr-4"
+                  className="w-45 h-60 object-cover mr-4"
                 />
                 <div>
                   <h4 className="text-lg font-bold mb-2">{book["Book-Title"]}</h4>
                   <p className="text-sm">by {book["Book-Author"]}</p> {/* Moved author here */}
-                  <p className="text-sm mt-2">{book["Year-Of-Publication"]}</p>
+                  <p className="text-sm mt-2">Publication Year: {book["Year-Of-Publication"]}</p>
                 </div>
-              </div>
-              <div className="mt-4 flex gap-4"> {/* Added buttons */}
-                <button className="bg-gray-700 px-4 py-2 rounded-md">Shuffle</button>
               </div>
             </div>
           ) : (
